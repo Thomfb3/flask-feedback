@@ -1,0 +1,48 @@
+{% extends 'base.html'  %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+
+
+            <h1 class="">Sign Up</h1>
+            <p class="lead">Register below</p>
+
+            <form method="POST">
+
+                {{ form.hidden_tag() }}
+
+                {% for field in form
+                    if field.widget.input_type != 'hidden' %}
+                <p> 
+                     {% if field.widget.input_type == 'checkbox' %}
+                        
+                        {{ field(class_="form-check-input") }}
+                        {{ field.label }}
+
+                        {% for error in field.errors %}
+                        <span class="form-text text-danger">{{ error }}</span>
+                        {% endfor %}
+
+                     {% else %}
+                        {{ field.label }}
+                        {{ field(class_="form-control") }}
+
+                        {% for error in field.errors %}
+                        <span class="form-text text-danger">{{ error }}</span>
+                        {% endfor %}
+
+                    {% endif %}
+                </p>
+                {% endfor %}
+
+                <button class="btn btn-primary" type="submit">Register</button>
+
+                <div id="" class="form-text mt-3">Already have an account? <a href="/login">Login</a></div>
+            </form>
+        </div>
+    </div>
+
+</div>
+{% endblock %}  

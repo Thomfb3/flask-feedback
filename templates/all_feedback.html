@@ -1,0 +1,28 @@
+{% extends 'base.html'  %}
+
+{% block content %}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-10 user-info">
+            <h3 class="border-bottom pb-3">All Feedback</h3>
+            {% for f in feedbacks %}
+            <div class="border-bottom mt-4 pb-3">
+                <h3 class="text-primary">{{ f.title }}</h3>
+                <p>{{ f.content }}</p>
+                <p class="text-secondary">Submitted by: {{ f.username }}</p>
+                <div class="d-flex justify-content-between">
+                    <a href="/feedback/{{ f.id }}/update" class="btn btn-primary">Edit</a>
+                    <a href="/feedback/{{ f.id }}/delete" class="text-danger">Delete Feedback</a>
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}

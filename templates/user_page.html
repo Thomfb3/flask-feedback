@@ -1,0 +1,50 @@
+{% extends 'base.html'  %}
+
+{% block content %}
+
+<div class="container mb-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 user-info bg-light border rounded p-3">
+            <div class="border-bottom pb-2 mb-2 d-flex justify-content-between">
+                <h2 class="">My Profile </h2>
+                <a href="/users/{{ user.username }}/delete" class="text-danger">Delete User</a>
+            </div>
+            <p>Username: <span> {{ user.username }} </span></p>
+            <p>Email: <span> {{ user.email }} </span></p>
+            <p>First Name: <span> {{ user.first_name }} </span></p>
+            <p>Last Name: <span> {{ user.last_name }} </span></p>
+            <div>
+                <a href="/users/{{ user.username }}/feedback/add" class="btn btn-primary">Provide Feedback</a>
+                {% if user.is_admin %}
+                <a href="/users/{{ user.username }}/all_users" class="btn btn-primary">See all Users</a>
+                <a href="/users/{{ user.username }}/all_feedback" class="btn btn-primary">See all Feedback</a>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-10 user-info">
+            <h3 class="border-bottom pb-3">My Feedback</h3>
+            {% for f in feedback %}
+            <div class="border-bottom mt-4 pb-3">
+                <h3 class="text-primary">{{ f.title }}</h3>
+                <p>{{ f.content }}</p>
+                <p class="text-secondary">Submitted by: {{ f.username }}</p>
+                <div class="d-flex justify-content-between">
+                    <a href="/feedback/{{ f.id }}/update" class="btn btn-primary">Edit</a>
+                    <a href="/feedback/{{ f.id }}/delete" class="text-danger">Delete Feedback</a>
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}

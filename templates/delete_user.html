@@ -1,0 +1,26 @@
+{% extends 'base.html'  %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+
+            <h1 class="">Delete User</h1>
+            <p>Are you sure you want to delete your account?</p>
+            <p class="text-danger">You can't undo this action.</p>
+
+            <form method="POST">
+                <div>
+
+                </div>
+                <!-- <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="delete_user" name="delete_user">
+                    <label class="form-check-label" for="exampleCheck1">I'm sure, delete my account</label>
+                </div> -->
+                <button class="btn btn-primary" type="submit">Delete User</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
